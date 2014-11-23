@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>{{appTitle}}</title>
+    <meta name="description" content="GeoTagging">
+    <meta name="author" content="Eric Gelinas">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="/style/responsive2-main.css" type="text/css" media="screen">
+  </head>
+
+  <body class="fuckingsimple" ontouchstart="" id="top">
+
+    {{{body}}}
+    <footer>
+    </footer>
+    <script src="/js/dist/vendor/require.js"></script>
+    <script>
+
+      "use strict";
+
+      require.config({
+        baseUrl     : "/js/dist",
+        paths       : {
+          "modernizr"  : '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min',
+          "handlebars" : '//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min'
+        },
+        waitSeconds : 15
+      });
+
+      {{#if view}}
+      require( ["view_{{view}}"] );
+      {{/if}}
+    </script>
+
+  </body>
+</html>
