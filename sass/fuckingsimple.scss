@@ -16,55 +16,19 @@ $color-lighter: rgb(207, 216, 220);
 $light-font-color:white;
 $color-dark-transparent:rgba(0, 0, 0, 0.3);
 $color-notasdark-transparent:rgba(27,30,88,.5);
-$color-active:rgb(2, 122, 187);
-
-$activity-category-outdoors: #4BAE4F;
-$activity-category-sports: #FF9F00;
-$activity-category-kids: #9B26AF;
-$activity-category-water: #2095F2;
-$activity-category-snow: #00BBD3;
+$color-active:rgb(211,25,150);
 
 $animation-speed: .5s;
 
-$border-radius: 4px;
-
 $font-family-serif: "jubilat", serif;
 $font-family-sans: "expressway", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-
-
-@include media(min-width 721px) {
-  &.facebook-thing-closed .fb-like
-  {
-    z-index: 1;
-    transform: scale(1.58);
-    transform-origin: center left;
-    iframe {
-      margin-top: -2.5px;
-      margin-left: -2px;
-    }
-  }
-}
-
-@-webkit-keyframes pulse_animation {
-  0% { transform: rotate(0deg);}
-  50% { transform: rotate(360deg); }
-}
-
 /*
 *  Styles for everything
 */
-body.parksforward.responsive2 {
+body.fuckingsimple {
 
   @include outer-container;
 
-  .pulse {
-  	animation-name: 'pulse_animation';
-  	animation-duration: 5000ms;
-  	animation-iteration-count: infinite;
-  	animation-timing-function: ease;
-  }
-
-  background-color:$color-dark;
   font-size: 22px;
   line-height: 27px;
   color:$color-dark;
@@ -78,8 +42,8 @@ body.parksforward.responsive2 {
   }
 
   h1, h2, h3, h4 {
-    font-family: $font-family-serif;
-    color:$light-font-color;
+    font-family: $font-family-sans;
+    color:$color-dark;
     font-weight: 600;
   }
 
@@ -96,13 +60,8 @@ body.parksforward.responsive2 {
     margin-bottom:$box-padding-half;
   }
 
-  div {
-    box-sizing:border-box;
-  }
-
-  .action {
+  button {
     background-color:transparent;
-    border-radius:$border-radius;
     color:white;
     border:solid 1px $color-active;
     font-size: 75%;
@@ -122,30 +81,6 @@ body.parksforward.responsive2 {
     }
   }
 
-  .shader {
-    position:absolute;
-    top:0;
-    right:0;
-    bottom:0;
-    left:0;
-    z-index:1;
-    background-color:$color-dark-transparent;
-  }
-
-  //
-  // Blocks
-  //
-  @import "block-search-box";
-  @import "block-header-search";
-  @import "block-story";
-  @import "block-stories-flexy";
-  @import "block-photo-carousel";
-  @import "block-instagram-strip";
-  @import "block-activity-icons";
-  @import "block-static-park-map";
-  @import "block-park-name";
-  @import "block-activity-filter";
-
   //
   // Common layout sections
   //
@@ -155,136 +90,14 @@ body.parksforward.responsive2 {
 
   footer {
     @include span-columns(12 of 12);
-    background-color:$color-dark-transparent;
-    font-size: 60%;
-    line-height: 50%;
-    color:$light-font-color;
-
-    a {
-      color:$light-font-color;
-    }
-
-    #footer-actions {
-      @include span-columns(12 of 12);
-      background-color:$color-notsodark;
-      a {
-        display:inline-block;
-        box-sizing:border-box;
-        width:33.33%;
-        border:solid 1px rgba(255,255,255,.3);
-        border-width:1px 1px 0 0;
-        padding:$box-padding 45px;
-
-        background-color:$color-notsodark;
-        background-repeat: no-repeat;
-        background-size: auto 50%;
-        background-position:$box-padding-half;
-
-        float:left;
-
-        &.top-action {
-          background-image: url('/style/responsive2/footer/circle-arrow.svg');
-        }
-
-        &.wander-action {
-          background-image: url('/style/responsive2/footer/circle-walking.svg');
-        }
-
-        &.contact-action {
-          background-image: url('/style/responsive2/footer/speech-bubble.svg');
-        }
-
-        &:last-of-type {
-          border-right-width:0;
-        }
-
-        @include media(max-width 720px) {
-          float:auto;
-          width:100%;
-          border-right-width:0;
-        }
-      }
-    }
-
-    #footer-credits {
-      @include span-columns(12 of 12);
-      background-color:$color-lighter;
-      display:inline-block;
-
-      > div {
-        height:138px;
-        padding:$box-padding;
-
-        h2 {
-          font-family: $font-family-sans;
-          color:$color-dark;
-          margin-bottom: 12%;
-        }
-
-        .stamen-logo {
-          width:83px;
-          height:22px;
-          float:left;
-          vertical-align:middle;
-          margin-right:10px;
-        }
-
-        .greeninfo-logo {
-          width: 85px;
-          height: 36px;
-          float: left;
-          vertical-align: bottom;
-          margin-right: 10px;
-          margin-top: -7px;
-        }
-
-        .hipcamp-logo {
-          width:83px;
-          height: 27px;
-          float:left;
-          vertical-align:middle;
-
-        }
-
-        &.builtby {
-          @include span-columns(5 of 12);
-        }
-
-        &.supportedby {
-          @include span-columns(7 of 12);
-        }
-
-        @include media(max-width 720px) {
-          &.builtby, &.supportedby {
-            @include span-columns(12 of 12);
-          }
-        }
-      }
-    }
   }
 
-  //
-  // Template specific layouts
-  //
-  @import "template-home";
-  @import "template-park";
-  @import "template-parks";
-
-}
-
-//
-//  Styles for Mobile
-//  TODO: Weave these in to the styles above
-//
-@include media(max-width 720px) {
-  body.parksforward.responsive2 {
-
-    font-size: 17px;
-    line-height: 20px;
+  .view-home.logged-out {
+    text-align:center;
 
     h1 {
-      font-size:100%;
+      margin:10% 0 $box-padding 0;
     }
-
   }
+
 }

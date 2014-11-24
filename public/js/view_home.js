@@ -1,13 +1,11 @@
-define(["require","exports", "module", "block-search-box", "jquery"], function(
+define(["require","exports", "module"], function(
   require,
   exports,
-  module,
-  BlockSearchBox,
-  jquery
+  module
 ) {
 
   "use strict";
 
-  new BlockSearchBox(".block-search-box",{}, function(err, blockSearchBox) {});
+  console.log("Hi");
 
 });

@@ -1,0 +1,103 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1.5em; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  box-sizing: border-box; }
+
+/*
+*  Variables for everything
+*/
+/*
+*  Styles for everything
+*/
+body.fuckingsimple {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 22px;
+  line-height: 27px;
+  color: #333;
+  max-width: 1024px;
+  font-family: "expressway", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.09em; }
+  body.fuckingsimple:after {
+    content: "";
+    display: table;
+    clear: both; }
+  body.fuckingsimple a {
+    text-decoration: none; }
+  body.fuckingsimple h1, body.fuckingsimple h2, body.fuckingsimple h3, body.fuckingsimple h4 {
+    font-family: "expressway", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    color: #333;
+    font-weight: 600; }
+  body.fuckingsimple input, body.fuckingsimple button, body.fuckingsimple select {
+    outline: none; }
+  body.fuckingsimple h1 {
+    font-size: 150%;
+    margin-bottom: 10px; }
+  body.fuckingsimple p {
+    margin-bottom: 10px; }
+  body.fuckingsimple button {
+    background-color: transparent;
+    color: white;
+    border: solid 1px #d31996;
+    font-size: 75%;
+    padding: 5px;
+    color: #d31996;
+    cursor: pointer;
+    display: inline-block; }
+    body.fuckingsimple button.active {
+      background-color: #d31996;
+      color: white; }
+    body.fuckingsimple button.selected {
+      color: white;
+      border: solid 1px white; }
+  body.fuckingsimple header {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 100%; }
+    body.fuckingsimple header:last-child {
+      margin-right: 0; }
+  body.fuckingsimple footer {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 100%; }
+    body.fuckingsimple footer:last-child {
+      margin-right: 0; }
+  body.fuckingsimple .view-home.logged-out {
+    text-align: center; }
+    body.fuckingsimple .view-home.logged-out h1 {
+      margin: 10% 0 20px 0; }
