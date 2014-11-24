@@ -56,7 +56,8 @@ body.fuckingsimple {
     display: table;
     clear: both; }
   body.fuckingsimple a {
-    text-decoration: none; }
+    text-decoration: none;
+    color: #19dd89; }
   body.fuckingsimple h1, body.fuckingsimple h2, body.fuckingsimple h3, body.fuckingsimple h4 {
     font-family: "expressway", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     color: #333;
@@ -97,7 +98,11 @@ body.fuckingsimple {
     width: 100%; }
     body.fuckingsimple footer:last-child {
       margin-right: 0; }
-  body.fuckingsimple .view-home.logged-out {
-    text-align: center; }
-    body.fuckingsimple .view-home.logged-out h1 {
-      margin: 10% 0 20px 0; }
+  body.fuckingsimple .view {
+    padding: 20px; }
+    body.fuckingsimple .view.logged-out {
+      text-align: center; }
+      body.fuckingsimple .view.logged-out h1 {
+        margin: 10% 0 20px 0; }
+      body.fuckingsimple .view.logged-out p {
+        margin: 20px; }

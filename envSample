@@ -1,2 +1,4 @@
 DATABASE_URL=[your db path]
 NODE_ENV=development
+FLICKR_KEY=[your flickr key]
+FLICKR_SECRET=[your flickr secret]

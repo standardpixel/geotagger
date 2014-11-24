@@ -18,7 +18,11 @@
 
   <body class="fuckingsimple" ontouchstart="" id="top">
 
-    {{{body}}}
+    {{#if user}}
+      {{{body}}}
+    {{else}}
+      {{>loggedout}}
+    {{/if}}
     <footer>
     </footer>
     <script src="/js/dist/vendor/require.js"></script>
@@ -35,9 +39,9 @@
         waitSeconds : 15
       });
 
-      {{#if view}}
+      {{#if view}}{{#if user}}
       require( ["view_{{view}}"] );
-      {{/if}}
+      {{/if}}{{/if}}
     </script>
 
   </body>

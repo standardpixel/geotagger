@@ -1,11 +1,34 @@
 'use strict';
 
-var express  = require('express'),
-    exphbs   = require('express-handlebars'),
-    memwatch = require('memwatch');
+var express        = require('express'),
+    exphbs         = require('express-handlebars'),
+    memwatch       = require('memwatch'),
+    env            = require("require-env"),
+    pg             = require("pg"),
+    escape         = require('pg-escape'),
+    passport       = require("passport"),
+    FlickrStrategy = require("passport-flickr").Strategy;
+
+    var User;
+
+User = {
+  findOrCreate : function(params, callback) {
+
+    if (User.info) {
+      callback(null, params);
+    } else {
+      User.info = params;
+      callback(null, params);
+    }
+
+  }
+};
 
 var app        = express();
 module.exports = app;
+
+app.use(express.cookieParser());
+app.use(express.session({secret: env.require("SESSION_SECRET")}));
 
 //
 // Handle memory leaks
@@ -16,6 +39,28 @@ memwatch.on('leak', function(info) {
 
 // you'll need cookies
 app.use(express.cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new FlickrStrategy({
+  consumerKey: env.require("FLICKR_KEY"),
+  consumerSecret: env.require("FLICKR_SECRET"),
+  callbackURL: "http://127.0.0.1:"+process.env.PORT+"/auth/flickr/callback"
+},
+function(token, tokenSecret, profile, done) {
+  User.findOrCreate(profile, function (err, user) {
+    console.log('User', user);
+    return done(err, user);
+  });
+}
+));
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
 
 //
 // Setup Express
@@ -59,10 +104,25 @@ app.get('/', function(req, res, next) {
       return next(err);
     }
     templateData.view = 'home';
+    templateData.user = User.info;
 
     res.render('home', templateData);
 
   });
+});
+
+app.get('/auth/flickr',
+passport.authenticate('flickr'),
+function(req, res){
+  // The request will be redirected to Flickr for authentication, so this
+  // function will not be called.
+});
+
+app.get('/auth/flickr/callback',
+passport.authenticate('flickr', { failureRedirect: '/' }),
+function(req, res) {
+  // Successful authentication, redirect home.
+  res.redirect('/');
 });
 
 app.use(function(req, res, next) {
