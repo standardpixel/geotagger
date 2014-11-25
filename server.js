@@ -47,8 +47,11 @@ passport.use(new FlickrStrategy({
   callbackURL: "http://127.0.0.1:"+process.env.PORT+"/auth/flickr/callback"
 },
 function(token, tokenSecret, profile, done) {
+  User.token = token;
+  User.tokenSecret = tokenSecret;
   User.findOrCreate(profile, function (err, user) {
-    console.log('User', user);
+    user.token = User.token;
+    user.tokenSecret = User.tokenSecret;
     return done(err, user);
   });
 }
@@ -99,12 +102,13 @@ app.use('/js/partials',  express.static('./views/partials', { maxAge: 3600e3 }))
 
 app.get('/', function(req, res, next) {
 
-  require('./controllers/home.js')(req, res, {}, function(err, templateData) {
+  require('./controllers/home.js')(req, res, {
+    user:User.info
+  }, function(err, templateData) {
     if (err) {
       return next(err);
     }
     templateData.view = 'home';
-    templateData.user = User.info;
 
     res.render('home', templateData);
 

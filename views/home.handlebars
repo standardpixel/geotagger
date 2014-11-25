@@ -2,6 +2,17 @@
 
 	<h1>Dead fucking simple Geotagging</h1>
 
-	<p>Welcome <a href="http://flickr.com/{{user.id}}">{{user.displayName}}</a></p>
+	<p>Welcome <a href="http://flickr.com/{{user.id}}">{{user.displayName}}!</a></p>
+
+	<ul>
+		{{#each flickr.photos.photo}}
+			<li>
+				<img src="//c1.staticflickr.com/{{farm}}/{{server}}/{{id}}_{{secret}}.jpg">
+				<br>{{#if title}}{{title}}{{else}}Untitled{{/if}}
+				{{#if place.place}}<br>{{place.place.name}}{{/if}}
+				<br>
+				</li>
+		{{/each}}
+	</ul>
 
 </div>
