@@ -1,0 +1,33 @@
+<div class="view view-photo">
+
+	<a href="/">< Your most recent photos</a>
+
+	<h1>{{#if photo.photo.title._content}}{{photo.photo.title._content}}{{else}}Untitled{{/if}}</h1>
+	<p>This photo was taken in {{#each place}}{{_content}} / {{/each}}</p>
+
+	<div class="photo-area">
+		<img src="//c1.staticflickr.com/{{photo.photo.farm}}/{{photo.photo.server}}/{{photo.photo.id}}_{{photo.photo.secret}}.jpg">
+	</div>
+
+	<div class="map-area">
+		<div id="map"></div>
+	</div>
+
+</div>
+
+<script>
+(function() {
+
+	"use strict";
+
+	window.STPX = {};
+
+	STPX.viewData = {
+		"photo" : {
+			"location" : {{#json}}{{{photo.photo.location}}}{{/json}}
+		},
+		"place" : ""
+	};
+
+}());
+</script>

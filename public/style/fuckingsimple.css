@@ -106,3 +106,8 @@ body.fuckingsimple {
         margin: 10% 0 20px 0; }
       body.fuckingsimple .view.logged-out p {
         margin: 20px; }
+    body.fuckingsimple .view.view-photo .photo-area {
+      max-width: 100%; }
+    body.fuckingsimple .view.view-photo .map-area #map {
+      width: 500px;
+      height: 500px; }

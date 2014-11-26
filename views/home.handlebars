@@ -7,7 +7,7 @@
 	<ul>
 		{{#each flickr.photos.photo}}
 			<li>
-				<img src="//c1.staticflickr.com/{{farm}}/{{server}}/{{id}}_{{secret}}.jpg">
+				<a href="/photo/{{id}}"><img src="//c1.staticflickr.com/{{farm}}/{{server}}/{{id}}_{{secret}}.jpg"></a>
 				<br>{{#if title}}{{title}}{{else}}Untitled{{/if}}
 				{{#if place.place}}<br>{{place.place.name}}{{/if}}
 				<br>

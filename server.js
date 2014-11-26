@@ -86,6 +86,13 @@ app.engine('handlebars', exphbs({
       } else {
         return options.fn(this).split(l[0])[0] + ' ' +  l[1];
       }
+    },
+    "json" : function(options) {
+
+      if (options && options.fn) {
+        return JSON.stringify(options.fn(this));
+      }
+
     }
   }
 }));
@@ -111,6 +118,21 @@ app.get('/', function(req, res, next) {
     templateData.view = 'home';
 
     res.render('home', templateData);
+
+  });
+});
+
+app.get('/photo/:id', function(req, res, next) {
+
+  require('./controllers/photo.js')(req, res, {
+    user:User.info
+  }, function(err, templateData) {
+    if (err) {
+      return next(err);
+    }
+    templateData.view = 'photo';
+
+    res.render('photo', templateData);
 
   });
 });

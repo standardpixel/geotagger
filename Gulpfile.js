@@ -37,7 +37,9 @@ gulp.task('lint', function() {
         "document",
         "location",
         "navigator",
-        "window"
+        "window",
+        "L",
+        "STPX"
       ],
       "expr" : true
     }))

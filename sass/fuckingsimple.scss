@@ -110,6 +110,18 @@ body.fuckingsimple {
     &.view-home {
 
     }
+
+    &.view-photo {
+      .photo-area {
+        max-width:100%;
+      }
+      .map-area {
+        #map {
+          width:500px;
+          height:500px;
+        }
+      }
+    }
   }
 
 }
