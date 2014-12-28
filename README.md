@@ -17,3 +17,7 @@ Running
 ----------------------
 `npm start` (development - includes gulp tasks for building sass and raw js)
 `foreman start` (production - make sure to change the value for the "environment" line in the .env file from "development" to "production")
+
+A little credit
+----------------------
+This is partially inspired by [Dan Catt's work on the Flickr geotaging interface back in 2008](http://code.flickr.net/2008/08/08/location-keeping-it-real-on-the-streets-yo/) and the [updated version](http://blog.flickr.net/en/2010/08/04/welcome-to-your-new-photo-page/) which I helped make back in 2010.
