@@ -1,0 +1,112 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1.5em; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/*
+*  Variables for everything
+*/
+/*
+*  Styles for everything
+*/
+body.geotagger {
+  font-size: 22px;
+  line-height: 27px;
+  color: #333333;
+  max-width: 1024px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  letter-spacing: .09em; }
+  body.geotagger a {
+    text-decoration: none;
+    color: #708D91; }
+  body.geotagger h1, body.geotagger h2, body.geotagger h3, body.geotagger h4 {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    color: #333333;
+    font-weight: 600; }
+  body.geotagger input, body.geotagger button, body.geotagger select {
+    outline: none; }
+  body.geotagger h1 {
+    font-size: 150%;
+    margin-bottom: 10px; }
+  body.geotagger p {
+    margin-bottom: 10px; }
+  body.geotagger button {
+    background-color: transparent;
+    color: white;
+    border: solid 1px #d31996;
+    font-size: 75%;
+    padding: 5px;
+    color: #d31996;
+    cursor: pointer;
+    display: inline-block; }
+    body.geotagger button.active {
+      background-color: #d31996;
+      color: white; }
+    body.geotagger button.selected {
+      color: white;
+      border: solid 1px white; }
+  body.geotagger .view {
+    margin: 20px; }
+    body.geotagger .view.logged-out {
+      text-align: center; }
+      body.geotagger .view.logged-out h1 {
+        margin: 10% 0 20px 0; }
+      body.geotagger .view.logged-out p {
+        margin: 20px; }
+    body.geotagger .view.view-photo .photo-area {
+      width: 50%;
+      border: solid 1px red;
+      display: inline-block; }
+      body.geotagger .view.view-photo .photo-area img {
+        width: 500px;
+        min-width: 100%; }
+    body.geotagger .view.view-photo .map-area {
+      width: 50px;
+      border: solid 1px blue;
+      display: inline-block; }
+      body.geotagger .view.view-photo .map-area #map {
+        width: 500px;
+        height: 500px; }

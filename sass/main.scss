@@ -1,6 +1,4 @@
 @import "reset";
-@import "bourbon";
-@import "neat";
 
 /*
 *  Variables for everything
@@ -20,14 +18,11 @@ $color-active:rgb(211,25,150);
 
 $animation-speed: .5s;
 
-$font-family-serif: "jubilat", serif;
-$font-family-sans: "expressway", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$font-family-sans: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 /*
 *  Styles for everything
 */
-body.fuckingsimple {
-
-  @include outer-container;
+body.geotagger {
 
   font-size: 22px;
   line-height: 27px;
@@ -86,15 +81,13 @@ body.fuckingsimple {
   // Common layout sections
   //
   header {
-    @include span-columns(12 of 12);
   }
 
   footer {
-    @include span-columns(12 of 12);
   }
 
   .view {
-    padding:$box-padding;
+    margin:$box-padding;
     &.logged-out {
       h1 {
         margin: 10% 0 $box-padding 0;
@@ -113,9 +106,22 @@ body.fuckingsimple {
 
     &.view-photo {
       .photo-area {
-        max-width:100%;
+
+        width:50%;
+        border:solid 1px red;
+        display:inline-block;
+
+        img {
+          width:500px;
+          min-width:100%;
+        }
       }
       .map-area {
+
+        width:50px;
+        border:solid 1px blue;
+        display:inline-block;
+
         #map {
           width:500px;
           height:500px;

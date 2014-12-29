@@ -47,6 +47,7 @@ passport.use(new FlickrStrategy({
   callbackURL: "http://127.0.0.1:"+process.env.PORT+"/auth/flickr/callback"
 },
 function(token, tokenSecret, profile, done) {
+
   User.token = token;
   User.tokenSecret = tokenSecret;
   User.findOrCreate(profile, function (err, user) {
