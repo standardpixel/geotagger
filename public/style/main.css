@@ -56,6 +56,7 @@ body.geotagger {
   line-height: 27px;
   color: #333333;
   max-width: 1024px;
+  margin: 0 auto;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
   letter-spacing: .09em; }
@@ -73,6 +74,8 @@ body.geotagger {
     margin-bottom: 10px; }
   body.geotagger p {
     margin-bottom: 10px; }
+  body.geotagger .area {
+    padding: 0 10px; }
   body.geotagger button {
     background-color: transparent;
     color: white;
@@ -88,25 +91,14 @@ body.geotagger {
     body.geotagger button.selected {
       color: white;
       border: solid 1px white; }
-  body.geotagger .view {
-    margin: 20px; }
-    body.geotagger .view.logged-out {
-      text-align: center; }
-      body.geotagger .view.logged-out h1 {
-        margin: 10% 0 20px 0; }
-      body.geotagger .view.logged-out p {
-        margin: 20px; }
-    body.geotagger .view.view-photo .photo-area {
-      width: 50%;
-      border: solid 1px red;
-      display: inline-block; }
-      body.geotagger .view.view-photo .photo-area img {
-        width: 500px;
-        min-width: 100%; }
-    body.geotagger .view.view-photo .map-area {
-      width: 50px;
-      border: solid 1px blue;
-      display: inline-block; }
-      body.geotagger .view.view-photo .map-area #map {
-        width: 500px;
-        height: 500px; }
+  body.geotagger .view.logged-out {
+    text-align: center; }
+    body.geotagger .view.logged-out h1 {
+      margin: 10% 0 20px 0; }
+    body.geotagger .view.logged-out p {
+      margin: 20px; }
+  body.geotagger .view.view-photo .photo-area {
+    width: 100%; }
+    body.geotagger .view.view-photo .photo-area img {
+      width: 500px;
+      min-width: 100%; }

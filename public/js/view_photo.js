@@ -8,6 +8,7 @@ define(["require","exports", "module"], function(
 
   console.log("STPX",STPX.viewData);
 
+  /*
   var map = L.map(document.querySelector("#map"), {
     center          : [STPX.viewData.photo.location.latitude, STPX.viewData.photo.location.longitude],
     zoom            : 13,
@@ -21,5 +22,6 @@ define(["require","exports", "module"], function(
   L.tileLayer("http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png").addTo(map);
 
   L.marker([STPX.viewData.photo.location.latitude, STPX.viewData.photo.location.longitude]).addTo(map);
+  */
 
 });

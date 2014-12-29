@@ -1,16 +1,22 @@
 <div class="view view-photo">
 
-	<a href="/">< Your most recent photos</a>
+	<div class="area photo-title">
+		<p><a href="/">< Your most recent photos</a></p>
 
-	<h1>{{#if photo.photo.title._content}}{{photo.photo.title._content}}{{else}}Untitled{{/if}}</h1>
-	<p>This photo was taken in {{#each place}}{{_content}} / {{/each}}</p>
+		<h1>{{#if photo.photo.title._content}}{{photo.photo.title._content}}{{else}}Untitled{{/if}}</h1>
+	</div>
 
 	<div class="photo-area">
 		<img src="//c1.staticflickr.com/{{photo.photo.farm}}/{{photo.photo.server}}/{{photo.photo.id}}_{{photo.photo.secret}}.jpg">
 	</div>
 
-	<div class="map-area">
-		<div id="map"></div>
+	<div class="area location-info-area">
+		{{#if photo.photo.location}}
+			<p>This photo was taken in {{#each place}}{{_content}} {{#unless @last}}/{{/unless}} {{/each}}</p>
+		{{else}}
+			<p>by You</p>
+			<p>This photo has no location</p>
+		{{/if}}
 	</div>
 
 </div>

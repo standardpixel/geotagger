@@ -28,6 +28,7 @@ body.geotagger {
   line-height: 27px;
   color:$color-dark;
   max-width:1024px;
+  margin:0 auto;
   font-family: $font-family-sans;
   font-weight: 300;
   letter-spacing: .09em;
@@ -54,6 +55,10 @@ body.geotagger {
 
   p {
     margin-bottom:$box-padding-half;
+  }
+
+  .area {
+    padding:0 $box-padding-half;
   }
 
   button {
@@ -87,7 +92,6 @@ body.geotagger {
   }
 
   .view {
-    margin:$box-padding;
     &.logged-out {
       h1 {
         margin: 10% 0 $box-padding 0;
@@ -107,24 +111,11 @@ body.geotagger {
     &.view-photo {
       .photo-area {
 
-        width:50%;
-        border:solid 1px red;
-        display:inline-block;
+        width:100%;
 
         img {
           width:500px;
           min-width:100%;
-        }
-      }
-      .map-area {
-
-        width:50px;
-        border:solid 1px blue;
-        display:inline-block;
-
-        #map {
-          width:500px;
-          height:500px;
         }
       }
     }
