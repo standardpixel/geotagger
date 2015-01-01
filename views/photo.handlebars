@@ -4,6 +4,7 @@
 		<p><a href="/">< Your most recent photos</a></p>
 
 		<h1>{{#if photo.photo.title._content}}{{photo.photo.title._content}}{{else}}Untitled{{/if}}</h1>
+		<p>by You</p>
 	</div>
 
 	<div class="photo-area">
@@ -14,7 +15,6 @@
 		{{#if photo.photo.location}}
 			<p>This photo was taken in {{#each place}}{{_content}} {{#unless @last}}/{{/unless}} {{/each}}</p>
 		{{else}}
-			<p>by You</p>
 			<p>This photo has no location</p>
 		{{/if}}
 	</div>
