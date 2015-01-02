@@ -11,12 +11,12 @@ module.exports = function(req, res, data, callback) {
 
   function getPlace(photo) {
     placeHierarchy.forEach(function(placeType) {
-      if (photo.photo.location && photo.photo.location[placeType]) {
+      if (photo && photo.photo.location && photo.photo.location[placeType]) {
         placeObjects.push(photo.photo.location[placeType]);
+      } else {
+        return false;
       }
     });
-
-    console.log('placeObjects',placeObjects);
 
     return placeObjects;
   }

@@ -102,3 +102,5 @@ body.geotagger {
     body.geotagger .view.view-photo .photo-area img {
       width: 500px;
       min-width: 100%; }
+  body.geotagger .view.view-photo .photo-map-overlay {
+    background-color: rgba(255, 255, 255, 0.95); }

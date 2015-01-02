@@ -13,7 +13,7 @@
 
 	<div class="area location-info-area">
 		{{#if photo.photo.location}}
-			<p>This photo was taken in {{#each place}}{{_content}} {{#unless @last}}/{{/unless}} {{/each}}</p>
+			<p><a href="http://woeid.rosselliot.co.nz/map/{{photo.photo.location.woeid}}" class="photo-place-action">This photo was taken in {{#each place}}{{_content}} {{#unless @last}}/{{/unless}} {{/each}}</a></p>
 		{{else}}
 			<p>This photo has no location</p>
 		{{/if}}

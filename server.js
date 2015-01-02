@@ -7,7 +7,8 @@ var express        = require('express'),
     pg             = require("pg"),
     escape         = require('pg-escape'),
     passport       = require("passport"),
-    FlickrStrategy = require("passport-flickr").Strategy;
+    FlickrStrategy = require("passport-flickr").Strategy,
+    fs             = require("fs");
 
     var User;
 
@@ -121,6 +122,43 @@ app.get('/', function(req, res, next) {
     res.render('home', templateData);
 
   });
+});
+
+app.get('/js/partials.json', function(req,res, next) {
+
+  var out = {};
+
+  fs.readdirSync("./views/partials").forEach(function(partialName) {
+    out[partialName.split(".")[0]] = fs.readFileSync("./views/partials/" + partialName, {"encoding":"utf8"});
+  });
+
+  res.json(out);
+
+});
+
+app.get('/js/helpers/:name.js', function(req,res, next) {
+
+  res.contentType('text/javascript');
+  //AMD-ify helpers
+  res.send([
+    "define([\"require\",\"exports\",\"module\",\"handlebars\"], function(require,exports,module,Handlebars) {\"use strict\";",
+    fs.readFileSync("./helpers/" + req.params.name + ".js", {"encoding":"utf8"}),
+    "Handlebars.registerHelper(\""+req.params.name+"\",module.exports)",
+    "});"
+    ].join(""));
+
+});
+
+app.get('/js/lib/:name.js', function(req,res, next) {
+
+  res.contentType('text/javascript');
+  //AMD-ify helpers
+  res.send([
+    "define([\"require\",\"exports\",\"module\"], function(require,exports,module,Handlebars) {\"use strict\";",
+    fs.readFileSync("./lib/" + req.params.name + ".js", {"encoding":"utf8"}),
+    "});"
+    ].join(""));
+
 });
 
 app.get('/photo/:id', function(req, res, next) {
