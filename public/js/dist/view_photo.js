@@ -14,6 +14,8 @@ define([ "require", "exports", "module", "fullscreen-overlay", "vendor/super-cla
                     photo: STPX.viewData.photo
                 });
             });
+        }), fullscreenOverlay.on("show", function() {
+            photoMap && photoMap.mapInstance && photoMap.mapInstance.invalidateSize();
         });
     }
     function init() {

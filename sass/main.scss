@@ -97,8 +97,9 @@ body.geotagger {
   header {
 
     margin-top:$box-padding-half;
-
     font-size:75%;
+    border-bottom: solid 1px rgba(0,0,0,.1);
+    margin-bottom:$box-padding;
 
     h1 {
       font-weight:normal;
@@ -107,10 +108,20 @@ body.geotagger {
 
   footer {
     font-size:75%;
+    border-top: solid 1px rgba(0,0,0,.1);
+    padding:$box-padding $box-padding-half;
+
+    li {
+      padding:0;
+      margin:0;
+    }
   }
 
   .view {
     &.logged-out {
+
+      height:70vh;
+
       h1 {
         margin: 10% 0 $box-padding 0;
       }

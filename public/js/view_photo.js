@@ -36,6 +36,12 @@ define(["require","exports", "module", "fullscreen-overlay", "vendor/super-class
       });
     });
 
+    fullscreenOverlay.on("show", function() {
+      if (photoMap && photoMap.mapInstance) {
+        photoMap.mapInstance.invalidateSize();
+      }
+    });
+
   }
 
   function init() {

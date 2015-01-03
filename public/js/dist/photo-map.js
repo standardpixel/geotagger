@@ -9,14 +9,16 @@ define([ "require", "exports", "module", "vendor/super-classy" ], function(requi
                 dragging: !1,
                 touchZoom: !1,
                 doubleClickZoom: !1,
-                zoomControl: !1
+                zoomControl: !1,
+                trackResize: !0
             });
             L.tileLayer("http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png").addTo(map), 
             L.marker([ options.photo.location.latitude, options.photo.location.longitude ], {
                 icon: L.divIcon({
                     className: "pinwin"
                 })
-            }).addTo(map), that.utils.get(".pinwin", rootElement)[0].innerHTML = '<div class="photo" style="background-image:url(\'//c1.staticflickr.com/' + options.photo.farm + "/" + options.photo.server + "/" + options.photo.id + "_" + options.photo.secret + ".jpg');\"></div>";
+            }).addTo(map), that.utils.get(".pinwin", rootElement)[0].innerHTML = '<div class="photo" style="background-image:url(\'//c1.staticflickr.com/' + options.photo.farm + "/" + options.photo.server + "/" + options.photo.id + "_" + options.photo.secret + ".jpg');\"></div>", 
+            that.mapInstance = map;
         }
         function init(callback) {
             initMap(), callback();

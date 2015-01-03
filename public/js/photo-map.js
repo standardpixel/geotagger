@@ -27,7 +27,8 @@ define(["require","exports","module","vendor/super-classy"], function(
         dragging        : false,
         touchZoom       : false,
         doubleClickZoom : false,
-        zoomControl     : false
+        zoomControl     : false,
+        trackResize     : true
       });
 
       L.tileLayer("http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png").addTo(map);
@@ -39,6 +40,8 @@ define(["require","exports","module","vendor/super-classy"], function(
       }).addTo(map);
 
       that.utils.get(".pinwin",rootElement)[0].innerHTML = "<div class=\"photo\" style=\"background-image:url('//c1.staticflickr.com/"+options.photo.farm+"/"+options.photo.server+"/"+options.photo.id+"_"+options.photo.secret+".jpg');\"></div>";
+
+      that.mapInstance = map;
     }
 
     function init(callback) {

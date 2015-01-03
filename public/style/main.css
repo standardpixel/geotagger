@@ -98,12 +98,20 @@ body.geotagger {
       border: solid 1px white; }
   body.geotagger header {
     margin-top: 10px;
-    font-size: 75%; }
+    font-size: 75%;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; }
     body.geotagger header h1 {
       font-weight: normal; }
   body.geotagger footer {
-    font-size: 75%; }
+    font-size: 75%;
+    border-top: solid 1px rgba(0, 0, 0, 0.1);
+    padding: 20px 10px; }
+    body.geotagger footer li {
+      padding: 0;
+      margin: 0; }
   body.geotagger .view.logged-out {
+    height: 70vh;
     text-align: center; }
     body.geotagger .view.logged-out h1 {
       margin: 10% 0 20px 0; }
