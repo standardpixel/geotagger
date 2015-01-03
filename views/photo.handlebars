@@ -1,10 +1,8 @@
 <div class="view view-photo">
 
 	<div class="area photo-title">
-		<p><a href="/">< Your most recent photos</a></p>
 
-		<h1>{{#if photo.photo.title._content}}{{photo.photo.title._content}}{{else}}Untitled{{/if}}</h1>
-		<p>by You</p>
+		<h2>{{#if photo.photo.title._content}}{{photo.photo.title._content}}{{else}}Untitled{{/if}} by You</h2>
 	</div>
 
 	<div class="photo-area">
@@ -13,10 +11,16 @@
 
 	<div class="area location-info-area">
 		{{#if photo.photo.location}}
-			<p><a href="http://woeid.rosselliot.co.nz/map/{{photo.photo.location.woeid}}" class="photo-place-action">This photo was taken in {{#each place}}{{_content}} {{#unless @last}}/{{/unless}} {{/each}}</a></p>
+			<p><a href="http://woeid.rosselliot.co.nz/map/{{photo.photo.location.woeid}}" class="photo-place-action">This photo was taken in {{#each place}}{{_content}}{{#unless @last}},{{/unless}} {{/each}}</a></p>
 		{{else}}
 			<p>This photo has no location</p>
 		{{/if}}
+	</div>
+
+	<div class="actions area">
+		<button class="action" onclick="(function(){location.href='../'}());">Photo list</button>
+		<button class="action open-map" class="map-action">Open Map</button>
+		<button class="action" onclick="(function(){location.href='//www.flickr.com/{{#if photo.photo.owner.path_alias}}{{photo.photo.owner.path_alias}}{{else}}{{photo.photo.owner.nsid}}{{/if}}/{{photo.photo.id}}'}());">Go to Flickr</button>
 	</div>
 
 </div>

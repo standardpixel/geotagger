@@ -1,15 +1,18 @@
 <div class="view view-home">
 
-	<h1>StandardPixel Geotagger</h1>
-
-	<p>Welcome <a href="http://flickr.com/{{user.id}}">{{user.displayName}}!</a></p>
+	<div class="area">
+		<p>Welcome <a href="http://flickr.com/{{user.id}}">{{user.displayName}}!</a></p>
+	</div>
 
 	<ul>
 		{{#each flickr.photos.photo}}
 			<li>
 				<a href="/photo/{{id}}"><img src="//c1.staticflickr.com/{{farm}}/{{server}}/{{id}}_{{secret}}.jpg"></a>
-				<br>{{#if title}}{{title}}{{else}}Untitled{{/if}}
-				{{#if place.place}}<br>{{place.place.name}}{{/if}}
+				<br>
+				<div class="area">
+					<a href="/photo/{{id}}">{{#if title}}{{title}}{{else}}Untitled{{/if}}</a> <span class="subdue">by You</span>
+					<span class="place">{{#if place.place}}<br>{{place.place.name}}{{/if}}</span>
+				</div>
 				<br>
 				</li>
 		{{/each}}

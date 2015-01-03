@@ -8,10 +8,16 @@ define(["require","exports", "module", "fullscreen-overlay", "vendor/super-class
 
   "use strict";
 
-  console.log("STPX",STPX.viewData);
-
   var $ = new SuperClassy(),
       fullscreenOverlay, photoMap;
+
+  function openMapOverlay(e) {
+
+    e.preventDefault();
+
+    fullscreenOverlay.show();
+
+  }
 
   function initMapOverlay() {
 
@@ -19,13 +25,8 @@ define(["require","exports", "module", "fullscreen-overlay", "vendor/super-class
       "className" : "photo-map-overlay"
     });
 
-    $.utils.get(".photo-place-action")[0].addEventListener("click", function(e) {
-
-      e.preventDefault();
-
-      fullscreenOverlay.show();
-
-    }, false);
+    $.utils.get(".photo-place-action")[0].addEventListener("click", openMapOverlay, false);
+    $.utils.get(".actions .open-map")[0].addEventListener("click", openMapOverlay, false);
 
     fullscreenOverlay.once("show", function() {
       require(["photo-map"], function(PhotoMap) {

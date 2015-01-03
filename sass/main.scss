@@ -13,18 +13,18 @@ $color-notsodark: rgb(55, 71, 79);
 $color-lighter: rgb(207, 216, 220);
 $light-font-color:white;
 $color-dark-transparent:rgba(0, 0, 0, 0.3);
-$color-notasdark-transparent:rgba(27,30,88,.5);
+$color-notasdark-transparent:rgba(255,255,255,.5);
 $color-active:rgb(211,25,150);
 
 $animation-speed: .5s;
 
-$font-family-sans: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$font-family-sans: "Open Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 /*
 *  Styles for everything
 */
 body.geotagger {
 
-  font-size: 22px;
+  font-size: 20px;
   line-height: 27px;
   color:$color-dark;
   max-width:1024px;
@@ -42,6 +42,7 @@ body.geotagger {
     font-family: $font-family-sans;
     color:$color-dark;
     font-weight: 600;
+    line-height:1em;
   }
 
   input, button, select {
@@ -55,6 +56,10 @@ body.geotagger {
 
   p {
     margin-bottom:$box-padding-half;
+  }
+
+  .subdue {
+    color:#AAA;
   }
 
   .area {
@@ -90,9 +95,18 @@ body.geotagger {
   // Common layout sections
   //
   header {
+
+    margin-top:$box-padding-half;
+
+    font-size:75%;
+
+    h1 {
+      font-weight:normal;
+    }
   }
 
   footer {
+    font-size:75%;
   }
 
   .view {
@@ -109,10 +123,28 @@ body.geotagger {
     }
 
     &.view-home {
+      ul {
+        li {
+          margin-bottom:$box-padding-half;
+          font-size:75%;
 
+          img {
+            width:100%;
+          }
+
+          .place {
+            font-size:75%;
+          }
+        }
+      }
     }
 
     &.view-photo {
+
+      h2 {
+        margin-bottom:$box-padding-half;
+      }
+
       .photo-area {
 
         width:100%;
@@ -121,6 +153,15 @@ body.geotagger {
           width:500px;
           min-width:100%;
         }
+
+      }
+
+      .location-info-area {
+        font-size:75%;
+      }
+
+      .actions {
+        margin-bottom:$box-padding;
       }
 
       .photo-map-overlay {
@@ -135,8 +176,8 @@ body.geotagger {
 
         .actions {
           position:absolute;
-          top:$box-padding;
-          right:$box-padding;
+          top:$box-padding-half;
+          right:$box-padding-half;
 
           z-index:2;
         }

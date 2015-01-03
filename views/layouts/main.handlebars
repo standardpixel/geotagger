@@ -19,12 +19,16 @@
 
   <body class="geotagger" ontouchstart="" id="top">
 
+    <header class="area">
+      <h1><a href="/">StandardPixel Geotagger</a></h1>
+    </header>
     {{#if user}}
       {{{body}}}
     {{else}}
       {{>loggedout}}
     {{/if}}
-    <footer>
+    <footer class="area">
+      © 2015 Eric Gelinas | <a href="http://standardpixel.com">standardpixel.com</a>
     </footer>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script src="/js/dist/vendor/require.js"></script>
