@@ -96,6 +96,12 @@ body.geotagger {
     body.geotagger button.selected {
       color: white;
       border: solid 1px white; }
+  body.geotagger .user-message {
+    padding: 10px;
+    font-size: 75%;
+    line-height: 1em;
+    display: block;
+    background-color: #A1D9ED; }
   body.geotagger header {
     margin-top: 10px;
     font-size: 75%;

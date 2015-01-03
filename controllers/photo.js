@@ -35,8 +35,6 @@ module.exports = function(req, res, data, callback) {
         "extras"   : "geo, woe"
       }, function(err, result) {
 
-        console.log('results',result);
-
         return callback(null, {
           appTitle : 'Geotagger',
           photo    : result,

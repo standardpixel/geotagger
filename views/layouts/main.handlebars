@@ -19,6 +19,9 @@
 
   <body class="geotagger" ontouchstart="" id="top">
 
+    {{#if @root.settings.userMessage}}
+    <p class="user-message area">{{@root.settings.userMessage}}</p>
+    {{/if}}
     <header class="area">
       <h1><a href="/">StandardPixel Geotagger</a></h1>
     </header>

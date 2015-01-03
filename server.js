@@ -28,6 +28,8 @@ User = {
 var app        = express();
 module.exports = app;
 
+app.set("userMessage", "This version of Geotagger is for mobile and is read only.");
+
 app.use(express.cookieParser());
 app.use(express.session({secret: env.require("SESSION_SECRET")}));
 

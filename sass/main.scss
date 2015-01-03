@@ -94,6 +94,14 @@ body.geotagger {
   //
   // Common layout sections
   //
+  .user-message {
+    padding:$box-padding-half;
+    font-size:75%;
+    line-height:1em;
+    display:block;
+    background-color:#A1D9ED;
+  }
+
   header {
 
     margin-top:$box-padding-half;
