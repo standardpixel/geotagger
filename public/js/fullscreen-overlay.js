@@ -12,7 +12,6 @@ define(["require","exports","module","handlebars-subview","super-classy"], funct
 
     var that   = this,
     views      = new Views(),
-    Handlebars = views.Handlebars,
     rootElement, containerElement, drawn;
 
     options = options || {};
@@ -20,7 +19,6 @@ define(["require","exports","module","handlebars-subview","super-classy"], funct
     SuperClassy.apply(this, arguments);
 
     function draw(data) {
-      console.log("views", views);
       var content = views.render(template)(data);
 
       that.fire("draw");
@@ -67,19 +65,42 @@ define(["require","exports","module","handlebars-subview","super-classy"], funct
 
       containerElement.style.display = "block";
 
+      setTimeout(function() {
+        containerElement.classList.add("showing");
+      }, 200);
+
       that.fire("show");
     }
 
     function hide() {
-      containerElement.style.display = "none";
+      setTimeout(function() {
+        containerElement.style.display = "none";
+      }, 500);
+
+      containerElement.classList.remove("showing");
 
       that.fire("hide");
+    }
+
+    function initActions() {
+      var closeAction = that.utils.get(".action.close",rootElement)[0];
+
+      if (closeAction) {
+        closeAction.addEventListener("click", function(e) {
+          e.preventDefault();
+          hide();
+        }, false);
+      }
     }
 
     function init(callback) {
       rootElement = that.utils.get(rootSelector)[0];
 
       initContainer();
+
+      that.once("show", function() {
+        initActions();
+      });
 
       callback();
 

@@ -76,6 +76,8 @@ body.geotagger {
     margin-bottom: 10px; }
   body.geotagger .area {
     padding: 0 10px; }
+  body.geotagger div, body.geotagger section {
+    box-sizing: border-box; }
   body.geotagger button {
     background-color: transparent;
     color: white;
@@ -103,4 +105,24 @@ body.geotagger {
       width: 500px;
       min-width: 100%; }
   body.geotagger .view.view-photo .photo-map-overlay {
-    background-color: rgba(255, 255, 255, 0.95); }
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    opacity: 0;
+    transition: .5s opacity; }
+    body.geotagger .view.view-photo .photo-map-overlay.showing {
+      opacity: 1; }
+    body.geotagger .view.view-photo .photo-map-overlay .actions {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 2; }
+    body.geotagger .view.view-photo .photo-map-overlay .map-area {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 100vh;
+      z-index: 1; }
+      body.geotagger .view.view-photo .photo-map-overlay .map-area .photo-map {
+        height: 100%;
+        width: 100%; }

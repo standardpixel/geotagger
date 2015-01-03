@@ -5,7 +5,9 @@ define([ "require", "exports", "module", "fullscreen-overlay", "vendor/super-cla
             className: "photo-map-overlay"
         }), $.utils.get(".photo-place-action")[0].addEventListener("click", function(e) {
             e.preventDefault(), fullscreenOverlay.show();
-        }, !1);
+        }, !1), fullscreenOverlay.once("show", function() {
+            require([ "photo-map" ], function() {});
+        });
     }
     function init() {
         initMapOverlay();

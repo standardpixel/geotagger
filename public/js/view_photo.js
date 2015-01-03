@@ -27,6 +27,10 @@ define(["require","exports", "module", "fullscreen-overlay", "vendor/super-class
 
     }, false);
 
+    fullscreenOverlay.once("show", function() {
+      require(["photo-map"], function(photoMap) {});
+    });
+
   }
 
   function init() {

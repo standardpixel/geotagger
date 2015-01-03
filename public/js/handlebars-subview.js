@@ -3,7 +3,7 @@ define(["require","exports","module","handlebars","vendor/super-classy","../../j
   exports,
   module,
   Handlebars,
-  stamenSuperClassy
+  SuperClassy
 ) {
 
   "use strict";
@@ -12,12 +12,18 @@ define(["require","exports","module","handlebars","vendor/super-classy","../../j
 
     var that = this;
 
-    stamenSuperClassy.apply(that, arguments);
+    SuperClassy.apply(that, arguments);
 
     function render(name) {
-      var t = Handlebars.partials[name];
+      var t  = Handlebars.partials[name],
+          rt = (typeof t === "function") ? t : Handlebars.compile(t);
 
-      return (typeof t === "function") ? t : Handlebars.compile(t);
+      that.fire("template-rendered", {
+        "template" : rt,
+        "name"     : name
+      });
+
+      return rt;
     }
 
     function initPartials(callback) {
