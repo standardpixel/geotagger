@@ -66,7 +66,7 @@ body.geotagger {
   }
 
   button {
-    background-color:transparent;
+    background-color:rgba(255,255,255,.5);
     color:white;
     border:solid 1px $color-active;
     font-size: 75%;
@@ -153,6 +153,28 @@ body.geotagger {
           .photo-map {
             height:100%;
             width:100%;
+          }
+
+          .pinwin {
+            background-image:url("pinwin.svg");
+            background-repeat: no-repeat;
+            width: 98px !important;
+            height: 118px !important;
+            margin-left: -49px !important;
+            margin-top: -34px !important;
+            position:relative;
+
+            .photo {
+              position: absolute;
+              bottom: 4px;
+              left: 3px;
+              height: 69px;
+              width: 91.5px;
+              background-repeat:no-repeat;
+              background-size:contain;
+              background-position:center center;
+              background-color:rgba(255,255,255,.7);
+            }
           }
         }
       }

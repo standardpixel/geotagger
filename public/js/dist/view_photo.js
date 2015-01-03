@@ -6,13 +6,17 @@ define([ "require", "exports", "module", "fullscreen-overlay", "vendor/super-cla
         }), $.utils.get(".photo-place-action")[0].addEventListener("click", function(e) {
             e.preventDefault(), fullscreenOverlay.show();
         }, !1), fullscreenOverlay.once("show", function() {
-            require([ "photo-map" ], function() {});
+            require([ "photo-map" ], function(PhotoMap) {
+                photoMap = new PhotoMap(".photo-map-overlay section", {
+                    photo: STPX.viewData.photo
+                });
+            });
         });
     }
     function init() {
         initMapOverlay();
     }
     console.log("STPX", STPX.viewData);
-    var fullscreenOverlay, $ = new SuperClassy();
+    var fullscreenOverlay, photoMap, $ = new SuperClassy();
     init();
 });

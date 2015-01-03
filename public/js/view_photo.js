@@ -11,7 +11,7 @@ define(["require","exports", "module", "fullscreen-overlay", "vendor/super-class
   console.log("STPX",STPX.viewData);
 
   var $ = new SuperClassy(),
-      fullscreenOverlay;
+      fullscreenOverlay, photoMap;
 
   function initMapOverlay() {
 
@@ -28,7 +28,11 @@ define(["require","exports", "module", "fullscreen-overlay", "vendor/super-class
     }, false);
 
     fullscreenOverlay.once("show", function() {
-      require(["photo-map"], function(photoMap) {});
+      require(["photo-map"], function(PhotoMap) {
+        photoMap = new PhotoMap(".photo-map-overlay section", {
+          "photo" : STPX.viewData.photo
+        });
+      });
     });
 
   }
@@ -41,21 +45,5 @@ define(["require","exports", "module", "fullscreen-overlay", "vendor/super-class
   // Proceed!
   //
   init();
-
-  /*
-  var map = L.map(document.querySelector("#map"), {
-    center          : [STPX.viewData.photo.location.latitude, STPX.viewData.photo.location.longitude],
-    zoom            : 13,
-    scrollWheelZoom : false,
-    dragging        : false,
-    touchZoom       : false,
-    doubleClickZoom : false,
-    zoomControl     : false
-  });
-
-  L.tileLayer("http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png").addTo(map);
-
-  L.marker([STPX.viewData.photo.location.latitude, STPX.viewData.photo.location.longitude]).addTo(map);
-  */
 
 });
