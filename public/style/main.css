@@ -117,6 +117,12 @@ body.geotagger {
       margin: 10% 0 20px 0; }
     body.geotagger .view.logged-out p {
       margin: 20px; }
+  body.geotagger .view.view-credit h2, body.geotagger .view.view-credit ul, body.geotagger .view.view-credit p {
+    margin-bottom: 20px; }
+  body.geotagger .view.view-credit h2 {
+    font-size: 150%; }
+  body.geotagger .view.view-credit p {
+    color: #d31996; }
   body.geotagger .view.view-home ul li {
     margin-bottom: 10px;
     font-size: 75%; }

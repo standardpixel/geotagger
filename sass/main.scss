@@ -133,6 +133,20 @@ body.geotagger {
       text-align:center;
     }
 
+    &.view-credit {
+      h2, ul, p {
+        margin-bottom:$box-padding;
+      }
+
+      h2 {
+        font-size:150%;
+      }
+
+      p {
+        color:$color-active;
+      }
+    }
+
     &.view-home {
       ul {
         li {

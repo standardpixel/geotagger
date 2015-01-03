@@ -161,6 +161,14 @@ app.get('/js/lib/:name.js', function(req,res, next) {
 
 });
 
+app.get('/credit', function(req, res, next) {
+
+  res.render('credit', {
+    "view" : "photo",
+    "user" : "guest"
+  });
+});
+
 app.get('/photo/:id', function(req, res, next) {
 
   require('./controllers/photo.js')(req, res, {
