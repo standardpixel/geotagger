@@ -42,6 +42,11 @@ module.exports = function(req, res, data, callback) {
     };
 
     Flickr.authenticate(flickrOptions, function(error, flickr) {
+
+      if (error) {
+        return callback(error);
+      }
+
       flickr.people.getPhotos({
         "user_id" : data.user.id,
         "extras"   : "geo"

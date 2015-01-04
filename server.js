@@ -28,7 +28,7 @@ User = {
 var app        = express();
 module.exports = app;
 
-app.set("userMessage", "Geotagger is read-only at this point in development.");
+app.set("userMessage", "Geotagger is read-only at this time.");
 
 app.use(express.cookieParser());
 app.use(express.session({secret: env.require("SESSION_SECRET")}));
