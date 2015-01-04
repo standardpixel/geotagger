@@ -28,7 +28,7 @@ User = {
 var app        = express();
 module.exports = app;
 
-app.set("userMessage", "This version of Geotagger is for mobile and is read only.");
+app.set("userMessage", "Geotagger is read-only at this point in development.");
 
 app.use(express.cookieParser());
 app.use(express.session({secret: env.require("SESSION_SECRET")}));
@@ -47,7 +47,7 @@ app.use(passport.session());
 passport.use(new FlickrStrategy({
   consumerKey: env.require("FLICKR_KEY"),
   consumerSecret: env.require("FLICKR_SECRET"),
-  callbackURL: "http://127.0.0.1:"+process.env.PORT+"/auth/flickr/callback"
+  callbackURL:"/auth/flickr/callback"
 },
 function(token, tokenSecret, profile, done) {
 
