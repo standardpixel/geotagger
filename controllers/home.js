@@ -2,7 +2,8 @@
 
 var request = require("request"),
     env     = require("require-env"),
-    Flickr  = require("flickrapi");
+    Flickr  = require("flickrapi"),
+    OAuth   = require("client-oauth");
 
 module.exports = function(req, res, data, callback) {
 
@@ -21,16 +22,31 @@ module.exports = function(req, res, data, callback) {
   // TODO: Start cacheing this
   //
   function getWoe(flickr, photoId, callback) {
-    flickr.places.getInfo({
-      "woe_id" : photosMap[photoId].woeid
-    }, function(err, result) {
 
-      photosMap[photoId].place = result;
+    flickr.get(
+      '', {
+        "method"         : "flickr.places.getInfo",
+        "woe_id"         : photosMap[photoId].woeid,
+        "format"         : "json",
+        "nojsoncallback" : 1
+      },
+      function( error, data, response ) {
 
-      hasGeo.splice(hasGeo.indexOf(photoId),1);
+        if( response && response.statusCode ) {
 
-      callback();
-    });
+          var result = JSON.parse(data);
+
+          photosMap[photoId].place = result;
+
+          hasGeo.splice(hasGeo.indexOf(photoId),1);
+
+          callback();
+        } else {
+          return callback(error);
+        }
+      }
+    );
+
   }
 
   if (data.user) {
@@ -41,51 +57,71 @@ module.exports = function(req, res, data, callback) {
       access_token_secret: data.user.tokenSecret
     };
 
-    Flickr.authenticate(flickrOptions, function(error, flickr) {
-
-      if (error) {
-        return callback(error);
+    var oauth = new OAuth[1.0]({
+      base: 'https://api.flickr.com/services/rest',
+      key: env.require("FLICKR_KEY"),
+      secret: env.require("FLICKR_SECRET"),
+      signature_method: 'HMAC-SHA1',
+      headers: {
+        'Accept': '*/*',
+        'Connection': 'Close',
+        'User-Agent': 'node.js/client-oauth'
       }
-
-      flickr.people.getPhotos({
-        "user_id" : data.user.id,
-        "extras"   : "geo"
-      }, function(err, result) {
-
-        result.photos.photo.forEach(function(photo) {
-
-          photosMap[photo.id] = photo;
-
-          if (photo.woeid) {
-            hasGeo.push(photo.id);
-          }
-
-        });
-
-        if (hasGeo.length) {
-
-          for (var i=0; hasGeo.length > i; i++) {
-
-            getWoe(flickr, hasGeo[i], function() {
-
-              if (!hasGeo.length) {
-                result.photos.photo = Object.keys(photosMap).map(function(id) {
-                  return photosMap[id];
-                });
-
-                _callback(result);
-              }
-
-            });
-
-          }
-
-        } else {
-          _callback(result);
-        }
-
-      });
     });
+
+    var flickr = new oauth.Client();
+
+    flickr.get(
+      '', {
+        "method"         : "flickr.people.getPublicPhotos",
+        "user_id"        : data.user.id,
+        "extras"         : "geo",
+        "format"         : "json",
+        "nojsoncallback" : 1
+      },
+      function( error, data, response ) {
+
+        if( response && response.statusCode ) {
+
+          var result = JSON.parse(data);
+
+          result.photos.photo.forEach(function(photo) {
+
+            photosMap[photo.id] = photo;
+
+            if (photo.woeid) {
+              hasGeo.push(photo.id);
+            }
+
+          });
+
+          if (hasGeo.length) {
+
+            for (var i=0; hasGeo.length > i; i++) {
+
+              getWoe(flickr, hasGeo[i], function() {
+
+                if (!hasGeo.length) {
+                  result.photos.photo = Object.keys(photosMap).map(function(id) {
+                    return photosMap[id];
+                  });
+
+                  _callback(result);
+                }
+
+              });
+
+            }
+
+          } else {
+            _callback(result);
+          }
+        } else {
+          return callback(error);
+        }
+      }
+    );
+    
   } else {
     return callback(null, {
       appTitle : 'Geotagger'
