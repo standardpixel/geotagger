@@ -117,6 +117,7 @@ app.get('/', function(req, res, next) {
     user:User.info
   }, function(err, templateData) {
     if (err) {
+      console.error(err);
       return next(err);
     }
     templateData.view = 'home';
