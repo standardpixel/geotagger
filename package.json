@@ -40,7 +40,6 @@
     "map-stream": "~0.1.0",
     "passport-flickr": "~0.2.0",
     "passport": "~0.2.1",
-    "flickrapi": "~0.3.28",
     "super-classy": "~1.0.0",
     "client-oauth": "~0.1.2"
   },

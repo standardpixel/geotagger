@@ -2,7 +2,7 @@
 
 var request = require("request"),
     env     = require("require-env"),
-    Flickr  = require("flickrapi");
+    Flickr  = require("../lib/flickr.js");
 
 module.exports = function(req, res, data, callback) {
 
@@ -22,18 +22,21 @@ module.exports = function(req, res, data, callback) {
   }
 
   if (data.user) {
-    var flickrOptions = {
-      api_key: env.require("FLICKR_KEY"),
-      secret: env.require("FLICKR_SECRET"),
-      access_token: data.user.token,
-      access_token_secret: data.user.tokenSecret
-    };
 
-    Flickr.authenticate(flickrOptions, function(error, flickr) {
-      flickr.photos.getInfo({
-        "photo_id" : req.params.id,
-        "extras"   : "geo, woe"
-      }, function(err, result) {
+    var flickr = new Flickr({
+      api_key: env.require("FLICKR_KEY"),
+      secret: env.require("FLICKR_SECRET")
+    });
+
+    flickr.get("flickr.photos.getInfo", {
+      "photo_id" : req.params.id,
+      "extras"   : "geo, woe"
+    },
+    function( error, _data, response ) {
+
+      if( response && response.statusCode ) {
+
+        var result = JSON.parse(_data);
 
         return callback(null, {
           appTitle : 'Geotagger',
@@ -41,8 +44,9 @@ module.exports = function(req, res, data, callback) {
           place    : getPlace(result),
           user     : data.user
         });
-
-      });
+      } else {
+        return callback(error);
+      }
     });
   } else {
     return callback(null, {
