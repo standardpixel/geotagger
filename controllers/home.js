@@ -1,8 +1,8 @@
 'use strict';
 
 var request = require("request"),
-    env     = require("require-env"),
-    Flickr  = require("../lib/flickr.js");
+    flickr  = require("../lib/flickr.js"),
+    woe     = require("../lib/woe.js");
 
 module.exports = function(req, res, data, callback) {
 
@@ -22,33 +22,22 @@ module.exports = function(req, res, data, callback) {
   //
   function getWoe(flickr, photoId, callback) {
 
-    flickr.get("flickr.places.getInfo", {
-        "woe_id"         : photosMap[photoId].woeid
-    },
-    function( error, data, response ) {
+    woe.get(photosMap[photoId].woeid, function(err, woe) {
 
-      if( response && response.statusCode ) {
-
-        var result = JSON.parse(data);
-
-        photosMap[photoId].place = result;
-
-        hasGeo.splice(hasGeo.indexOf(photoId),1);
-
-        callback();
-      } else {
-        return callback(error);
+      if (err) {
+        console.error(err);
       }
+
+      photosMap[photoId].place = woe;
+
+      hasGeo.splice(hasGeo.indexOf(photoId),1);
+
+      callback();
     });
 
   }
 
   if (data.user) {
-
-    var flickr = new Flickr({
-      api_key: env.require("FLICKR_KEY"),
-      secret: env.require("FLICKR_SECRET")
-    });
 
     flickr.get("flickr.people.getPublicPhotos", {
         "user_id"        : data.user.id,

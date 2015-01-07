@@ -1,8 +1,7 @@
 'use strict';
 
 var request = require("request"),
-    env     = require("require-env"),
-    Flickr  = require("../lib/flickr.js");
+    flickr  = require("../lib/flickr.js");
 
 module.exports = function(req, res, data, callback) {
 
@@ -22,11 +21,6 @@ module.exports = function(req, res, data, callback) {
   }
 
   if (data.user) {
-
-    var flickr = new Flickr({
-      api_key: env.require("FLICKR_KEY"),
-      secret: env.require("FLICKR_SECRET")
-    });
 
     flickr.get("flickr.photos.getInfo", {
       "photo_id" : req.params.id,
